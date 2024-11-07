@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ttl6jdhy65cc"]
+
+[ext_resource type="Script" path="res://CamBase.gd" id="1_y58ku"]
+[ext_resource type="PackedScene" uid="uid://c4mli87th87em" path="res://pokemon.tscn" id="2_elcjn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8le3x"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CamBase" type="Node3D" parent="."]
+script = ExtResource("1_y58ku")
+
+[node name="Camera3D" type="Camera3D" parent="CamBase"]
+transform = Transform3D(1, 0, 0, 0, 0.978757, 0.205026, 0, -0.205026, 0.978757, 0, 0.636843, 2)
+
+[node name="Pokemon" parent="." instance=ExtResource("2_elcjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0216275, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.564398, 0)
+mesh = SubResource("BoxMesh_8le3x")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
