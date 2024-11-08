@@ -195,6 +195,7 @@ animations = [{
 radius = 5.0
 
 [node name="MultiplayerPlayer" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_rkv61")
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
