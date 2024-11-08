@@ -17,6 +17,12 @@ var _is_on_floor = true
 
 var direction = 1
 
+func _ready():
+	if multiplayer.get_unique_id() == player_id:
+		$Camera2D.make_current()
+	else:
+		$Camera2D.enabled = false
+
 func _apply_animations(delta):
 	# Flip the Sprite
 	if direction > 0:
