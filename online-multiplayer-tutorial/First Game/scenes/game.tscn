@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cuv4vme4rwno0"]
+[gd_scene load_steps=20 format=3 uid="uid://cuv4vme4rwno0"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_l4ihi"]
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="1_rbmkf"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d2w2i5h0lhc6l" path="res://scenes/slime.tscn" id="6_l0s6b"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="7_8cblx"]
 [ext_resource type="Script" path="res://scripts/finish_line.gd" id="10_ntt3r"]
+[ext_resource type="PackedScene" uid="uid://bd4vnoc03mstq" path="res://scenes/SlimeSpawn.tscn" id="11_7inv3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ashvg"]
 texture = ExtResource("2_r1crl")
@@ -458,6 +459,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pplj"]
 size = Vector2(141, 81)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xyvtm"]
+b = Vector2(0, 33)
+
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -638,6 +642,21 @@ script = ExtResource("10_ntt3r")
 position = Vector2(5.5, -11.5)
 shape = SubResource("RectangleShape2D_0pplj")
 
+[node name="SlimeSpawn" parent="." node_paths=PackedStringArray("slime_spawn_location", "slime_spwan_node") instance=ExtResource("11_7inv3")]
+collision_mask = 2
+slime_spawn_location = NodePath("SlimeSpawnLocation")
+slime_spwan_node = NodePath("../SlimeSpawnNode")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlimeSpawn"]
+position = Vector2(104, -65)
+shape = SubResource("SegmentShape2D_xyvtm")
+
+[node name="SlimeSpawnLocation" type="Marker2D" parent="SlimeSpawn"]
+position = Vector2(177, -42)
+
+[node name="SlimeSpawnNode" type="Node2D" parent="."]
+
 [connection signal="pressed" from="MultiplayerHUD/Panel/VBoxContainer/HostGame" to="GameManager" method="become_host"]
 [connection signal="pressed" from="MultiplayerHUD/Panel/VBoxContainer/JoinAsPlayer2" to="GameManager" method="join_as_player_2"]
 [connection signal="body_entered" from="FinishLine" to="FinishLine" method="_on_body_entered"]
+[connection signal="body_entered" from="SlimeSpawn" to="SlimeSpawn" method="_on_body_entered"]
