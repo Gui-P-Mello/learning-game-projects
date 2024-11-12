@@ -3,7 +3,7 @@ extends Node
 var multiplayer_scene = preload("res://scenes/multiplayer_player.tscn")
 
 const SERVER_PORT = 8080
-const SERVER_IP = "localhost"
+const SERVER_IP = "192.168.1.14" #"localhost"
 
 var players_spawn_node
 var host_mode_enabled = false
@@ -27,9 +27,10 @@ func become_host():
 	multiplayer.peer_connected.connect(_add_player_to_game)
 	multiplayer.peer_disconnected.connect(_del_player)
 	
-	_add_player_to_game(1)
-	
 	_remove_single_player()
+	
+	if not OS.has_feature("dedicated_server"):
+		_add_player_to_game(1)
 
 func join_as_player_2():
 	print("Player 2 joining")
