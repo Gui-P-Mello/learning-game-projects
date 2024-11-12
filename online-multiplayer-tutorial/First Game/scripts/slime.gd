@@ -9,6 +9,10 @@ var direction = 1
 @onready var ray_cast_ground = $RayCastGround
 @onready var animated_sprite = $AnimatedSprite2D
 
+func kill_slime():
+	print("Kill slime!")
+	queue_free()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if ray_cast_ground.is_colliding():
