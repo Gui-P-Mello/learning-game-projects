@@ -3,7 +3,7 @@ extends Node
 var multiplayer_scene = preload("res://scenes/multiplayer_player.tscn")
 
 const SERVER_PORT = 8080
-const SERVER_IP = "192.168.1.7" #"localhost"
+const SERVER_IP = "localhost"
 
 var players_spawn_node
 var host_mode_enabled = false
