@@ -11,7 +11,7 @@ var entityNames: EntityNames
 
 func enter(miner:Miner)->void:
 	if(miner.m_location !=  Location.location_type.saloon):
-		print("\n", EntityNames.GetNameOfEntity(miner.ID()), "Boy, ah sure is thusty! Walkin' to the saloon")
+		print("\n", EntityNames.GetNameOfEntity(miner.ID()), ": Boy, ah sure is thirsty! Walkin' to the saloon")
 		miner.m_location = Location.location_type.saloon
 
 func execute(miner:Miner)->void:

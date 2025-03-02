@@ -19,12 +19,16 @@ func Update() -> void:
 	if(m_globalState): m_globalState.execute(m_owner)
 	if(m_curretState): m_curretState.execute(m_owner)
 	
-func ChangeState(newState: State):
+func ChangeState(newState: State)->void:
 	assert(newState && "<ChangeState():State>: trying to change to a null state")
 	m_curretState.exit(m_owner)
 	m_previousState = m_curretState
 	m_curretState = newState
 	m_curretState.enter(m_owner)
+	
+func RevertToPreviousState()->void:
+	m_curretState.exit(m_owner)
+	m_curretState = m_previousState
 	
 func CurrentState()->State: return m_curretState
 func PreviousState()->State: return m_previousState

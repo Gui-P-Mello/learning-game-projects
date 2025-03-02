@@ -16,7 +16,7 @@ func enter(miner:Miner)->void:
 func execute(miner:Miner)->void:
 	miner.Deposit()
 	
-	print("\n", EntityNames.GetNameOfEntity(miner.ID()), " Depositin’ gold. Total savings now: ", miner.m_iMoneyInBank)
+	print("\n", EntityNames.GetNameOfEntity(miner.ID()), ": Depositin’ gold. Total savings now: ", miner.m_iMoneyInBank)
 	if(miner.m_iMoneyInBank >= miner.m_iComfortLevel):
 		miner.m_stateMachine.ChangeState(GoHomeAndSleepTilRested.instance())
 	else:
