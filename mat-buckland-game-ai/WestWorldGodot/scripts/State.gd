@@ -7,3 +7,6 @@ func execute(entity)->void:
 	
 func exit(entity)->void:
 	pass
+
+func OnMessage(entity:BaseGameEntity, telegram:Telegram)->bool:
+	return false

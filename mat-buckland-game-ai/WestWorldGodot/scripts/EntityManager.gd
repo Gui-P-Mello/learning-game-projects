@@ -12,5 +12,5 @@ var entities:Dictionary = {}
 func RegisterEntity(entity:BaseGameEntity)->void:
 	entities[entity.ID()] = entity
 	
-func GetEntityFronID(id:int)->BaseGameEntity:
+func GetEntityFromID(id:int)->BaseGameEntity:
 	return entities.get(id, null)

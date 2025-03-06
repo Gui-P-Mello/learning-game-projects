@@ -13,8 +13,9 @@ func ID()->int:
 
 func Update() -> void:
 	pass
-	
 
+func HandleMessage(telegram:Telegram)->bool:
+	return false
 
 
 

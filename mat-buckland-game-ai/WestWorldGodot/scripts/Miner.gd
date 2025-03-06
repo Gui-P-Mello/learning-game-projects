@@ -38,4 +38,7 @@ func Deposit()->void:
 	m_iGoldCarried = 0
 
 func IncreaseFatigue()->void: m_iFatigue+=1
-func Sleep()->void: m_iFatigue = 0
+func Sleep()->void: m_iFatigue -= 1
+
+func HandleMessage(telegram:Telegram)->bool:
+	return m_stateMachine.HandleMessage(telegram)

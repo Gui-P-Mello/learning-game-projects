@@ -33,3 +33,10 @@ func RevertToPreviousState()->void:
 func CurrentState()->State: return m_curretState
 func PreviousState()->State: return m_previousState
 func GlobalState()->State: return m_globalState
+
+func HandleMessage(telegram:Telegram)->bool:
+	if(m_curretState && m_curretState.OnMessage(m_owner, telegram)):
+		return true
+	if(m_globalState && m_globalState.OnMessage(m_owner, telegram)):
+		return true
+	return false
